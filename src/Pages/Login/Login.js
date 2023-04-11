@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const { signIn } = useContext(AuthContext);
+    const [loginError, setLoginError] = useState('');
+
+
+
 
     const handleLogin = data => {
         console.log(data);
