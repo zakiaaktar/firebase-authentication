@@ -40,7 +40,7 @@ const SignUp = () => {
     return (
         <div className='h-[800px] flex justify-center items-center -mt-20'>
             <div className='w-96 p-7 shadow-2xl'>
-                <h2 className="text-2xl text-center text-red-700 font-bold">Sign Up</h2>
+                <h2 className="text-3xl text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-400 font-bold">Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Name</span></label>
@@ -69,12 +69,12 @@ const SignUp = () => {
                     </div>
 
 
-                    <input className='btn px-6 py-3 border-none bg-red-700 w-full mt-6 font-bold cursor-pointer' value="Sign Up" type="submit" />
+                    <input className='btn bg-gradient-to-br from-blue-900 to-blue-400 px-6 py-3 border-none bg-red-700 w-full mt-6 font-bold cursor-pointer' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
-                <p className='mt-2'>Already have an account <Link to='/login' className='text-red-700 font-bold'>Please Login</Link></p>
-                <div className="divider">OR</div>
-                <button className='btn btn-outline w-full text-red-700'>CONTINUE WITH GOOGLE</button>
+                <p className='my-6'>Already have an account <Link to='/login' className='text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-400 font-bold'>  Please Login</Link></p>
+                {/* <div className="divider">OR</div>
+                <button className='btn btn-outline w-full text-red-700'>CONTINUE WITH GOOGLE</button> */}
             </div>
         </div>
     );

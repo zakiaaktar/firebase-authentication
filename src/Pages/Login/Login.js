@@ -1,8 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
-
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 
@@ -11,6 +10,12 @@ const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { signIn } = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+
+    const from = location.state?.from?.pathname || '/';
 
 
 
@@ -24,8 +29,8 @@ const Login = () => {
              .then(result => {
                  const user = result.user;
                  console.log(user)
-                 // setLoginUserEmail(data.email);
-                //  navigate(from, {replace: true});
+                 //setLoginUserEmail(data.email);
+                 navigate(from, {replace: true});
  
              })
              .catch(error => {
@@ -39,7 +44,7 @@ const Login = () => {
     return (
         <div className='h-[800px] flex justify-center items-center -mt-20'>
             <div className='w-96 p-7 shadow-2xl'>
-                <h2 className="text-2xl text-center text-red-700 font-bold">Login</h2>
+                <h2 className="text-3xl text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-400 font-bold">Login</h2>
                 <form onSubmit={handleSubmit(handleLogin)}>
                     <div className="form-control w-full max-w-xs">
                         <label className="label"> <span className="label-text">Email</span></label>
@@ -63,12 +68,12 @@ const Login = () => {
                     </div>
 
 
-                    <input className='btn px-6 py-3 border-none bg-red-700 w-full mt-2 font-bold cursor-pointer' value="Login" type="submit" />
+                    <input className='btn px-6 py-3 border-none bg-gradient-to-br from-blue-900 to-blue-400 w-full mt-2 font-bold cursor-pointer' value="Login" type="submit" />
                     <div>
                         {loginError && <p className='text-red-600'>{loginError}</p>}
                     </div>
                 </form>
-                <p className='mt-2'>New to firebase Authentication <Link to='/signup' className='text-red-700 font-bold'>Create new account</Link></p>
+                <p className='mt-2'>New to firebase Authentication <Link to='/signup' className='text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-400 font-bold'>Create new account</Link></p>
                 <div className="divider">OR</div>
                 {/* <button className='btn btn-outline w-full text-red-700'>CONTINUE WITH GOOGLE</button> */}
                 <SocialLogin></SocialLogin>
