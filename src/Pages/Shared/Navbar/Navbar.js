@@ -15,13 +15,13 @@ const Navbar = () => {
 
     const menuItems = <>
         <li className='text-black font-semibold hover:text-red-700'><Link to='/'>Home</Link></li>
-        <li className='text-black font-semibold hover:text-red-700 hover:bg-none'><Link to='/about'>About</Link></li>
+        {/* <li className='text-black font-semibold hover:text-red-700 hover:bg-none'><Link to='/about'>About</Link></li>
         <li className='text-black font-semibold hover:text-red-700'><Link to='/services'>Services</Link></li>
         <li className='text-black font-semibold hover:text-red-700'><Link to='/appointment'>Appointment</Link></li>
-        <li className='text-black font-semibold hover:text-red-700'><Link to='/dashboard'>Dashboard</Link></li>
+        <li className='text-black font-semibold hover:text-red-700'><Link to='/dashboard'>Dashboard</Link></li> */}
         {user?.uid ?
             <>
-                {/* <li><Link to='/dashboard'>Dashboard</Link></li> */}
+                <li><Link to='/dashboard'>Dashboard</Link></li>
                 <li className='text-black font-semibold hover:text-red-700'><button onClick={handleLogOut}>Sign Out</button></li>
             </>
             : <li className='text-black font-semibold hover:text-red-700 hover:bg-none'><Link to='/login '>Login</Link></li>}
