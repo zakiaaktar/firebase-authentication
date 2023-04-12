@@ -5,6 +5,8 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
+
+
 const Login = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { signIn } = useContext(AuthContext);
@@ -15,7 +17,23 @@ const Login = () => {
 
     const handleLogin = data => {
         console.log(data);
+         //console.log(errors);
+         setLoginError('');
+
+         signIn(data.email, data.password)
+             .then(result => {
+                 const user = result.user;
+                 console.log(user)
+                 // setLoginUserEmail(data.email);
+                //  navigate(from, {replace: true});
+ 
+             })
+             .catch(error => {
+                 console.log(error.message)
+                 setLoginError(error.message);
+             });
     }
+
 
 
     return (
@@ -46,9 +64,9 @@ const Login = () => {
 
 
                     <input className='btn px-6 py-3 border-none bg-red-700 w-full mt-2 font-bold cursor-pointer' value="Login" type="submit" />
-                    {/* <div>
+                    <div>
                         {loginError && <p className='text-red-600'>{loginError}</p>}
-                    </div> */}
+                    </div>
                 </form>
                 <p className='mt-2'>New to firebase Authentication <Link to='/signup' className='text-red-700 font-bold'>Create new account</Link></p>
                 <div className="divider">OR</div>
